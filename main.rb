@@ -6,10 +6,12 @@ require_remote 'lib/map_tile.rb'
 require_remote 'lib/map.rb'
 
 Window.load_resources do
-  objects = [Player.new, Map.create].flatten
+  player = [Player.new]
+  map = Map.create
 
   Window.loop do
-    Sprite.update(objects)
-    Sprite.draw(objects)
+    Sprite.update(player + map)
+    Sprite.check(player, map)
+    Sprite.draw(player + map)
   end
 end
