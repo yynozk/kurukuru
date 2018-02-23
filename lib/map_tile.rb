@@ -10,4 +10,9 @@ class MapTile < Sprite
     self.x, self.y = x * @@tile_width, y * @@tile_height
     self.image = @@tileset[tile_index]
   end
+
+  def scroll(offset)
+    self.x += offset[:x]
+    self.y += offset[:y]
+  end
 end

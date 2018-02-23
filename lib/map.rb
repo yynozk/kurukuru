@@ -39,12 +39,23 @@ class Map
   def self.create
     MapTile.init(Image[:tileset], TILE_COLUMNS, TILE_COUNT / TILE_COLUMNS)
 
-    map = []
+    tiles = []
     MAP_CSV.each_with_index do |v, i|
       next if v == 0
-      map << MapTile.new(i % MAP_WIDTH, (i / MAP_WIDTH).floor, v - 1)
+      tiles << MapTile.new(i % MAP_WIDTH, (i / MAP_WIDTH).floor, v - 1)
     end
 
-    return map
+    self.new(tiles)
+  end
+
+
+  attr_reader :tiles
+
+  def initialize(tiles)
+    @tiles = tiles
+  end
+
+  def scroll(offset)
+    @tiles.map.each {|t| t.scroll(offset) }
   end
 end
