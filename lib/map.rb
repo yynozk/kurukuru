@@ -1,5 +1,5 @@
 class Map
-  Image.register(:tileset, "/data/tileset.png")
+  Image.register(:tileset, "data/tileset.png")
 
   MAP_WIDTH, MAP_HEIGHT = 40, 30
   TILE_WIDTH, TILE_HEIGHT, TILE_COUNT, TILE_COLUMNS = 16, 16, 1, 1
