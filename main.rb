@@ -15,5 +15,10 @@ Window.load_resources do
     Sprite.update(map.tiles)
     Sprite.check([player], map.tiles)
     Sprite.draw([player] + map.tiles)
+
+    if Input.key_push?(K_ESCAPE)
+      player = Player.new
+      map = Map.create
+    end
   end
 end
