@@ -12,9 +12,9 @@ Window.load_resources do
   Window.loop do
     Sprite.update([player])
     Sprite.check([player], map.tiles)
-    map.scroll(player.offset)
+    map.offset = player.update_offset
     Sprite.update(map.tiles)
-    Sprite.draw([player] + map.tiles)
+    Sprite.draw(map.tiles + [player])
 
     if Input.key_push?(K_ESCAPE)
       player = Player.new

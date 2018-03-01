@@ -55,7 +55,7 @@ class Map
     @tiles = tiles
   end
 
-  def scroll(offset)
-    @tiles.map.each {|t| t.scroll(offset) }
+  def offset=(offset)
+    @tiles.map.each {|t| t.offset = offset }
   end
 end
