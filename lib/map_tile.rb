@@ -23,6 +23,8 @@ class MapTile < Sprite
   end
 
   def update
+    @_x += 1.3 if self.role == :moving_wall
+
     self.visible = in_window?
 
     self.x = @_x - @offset[:x]

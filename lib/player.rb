@@ -33,7 +33,7 @@ class Player < Sprite
 
   def shot(other)
     case other.role
-    when :wall
+    when :wall, :moving_wall
       @alive = false
       self.image = Image.new(WIDTH, HEIGHT, COLOR_DEAD)
     when :spring
