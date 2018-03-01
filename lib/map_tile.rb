@@ -2,7 +2,7 @@ class MapTile < Sprite
   attr_accessor :offset
   attr_reader :role
 
-  ROLES = [:start, :goal, :wall, :spring, :moving_wall]
+  ROLES = [:start, :goal, :wall, :moving_wall, :spring]
 
   def self.init(tileset, xcount, ycount)
     @@tileset = tileset.slice_tiles(xcount, ycount)
