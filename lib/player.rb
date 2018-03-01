@@ -8,13 +8,13 @@ class Player < Sprite
   SPEED_ROTATION = 1
   SPEED_BOUND_ROTATION = 2
   COLOR_ALIVE = C_WHITE
-  COLOR_DEAD = C_RED
+  COLOR_DEAD = [96, 96, 96]
 
-  def initialize
-    super
+  def initialize(x = 320, y = 240)
+    super()
     self.image = Image.new(WIDTH, HEIGHT, COLOR_ALIVE)
 
-    @_x, @_y, @_a = 320, 240, 0
+    @_x, @_y, @_a = x - WIDTH/2, y - HEIGHT/2, 0
     @va = 1
     @offset = {x: 0, y: 0}
     @alive = true

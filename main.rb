@@ -6,8 +6,7 @@ require_remote 'lib/map_tile.rb'
 require_remote 'lib/map.rb'
 
 Window.load_resources do
-  player = Player.new
-  map = Map.create
+  player, map = Map.create
 
   Window.loop do
     Sprite.update([player])
@@ -17,8 +16,7 @@ Window.load_resources do
     Sprite.draw(map.tiles + [player])
 
     if Input.key_push?(K_ESCAPE)
-      player = Player.new
-      map = Map.create
+      player, map = Map.create
     end
   end
 end
