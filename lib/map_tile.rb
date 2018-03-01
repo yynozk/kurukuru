@@ -1,4 +1,8 @@
 class MapTile < Sprite
+  attr_reader :role
+
+  ROLES = [:wall, :spring]
+
   def self.init(tileset, xcount, ycount)
     @@tileset = tileset.slice_tiles(xcount, ycount)
     @@tile_width = @@tileset[0].width
@@ -9,6 +13,7 @@ class MapTile < Sprite
     super()
     self.x, self.y = x * @@tile_width, y * @@tile_height
     self.image = @@tileset[tile_index]
+    @role = ROLES[tile_index]
 
     @in_window_range_x = -self.image.width..Window.width
     @in_window_range_y = -self.image.height..Window.height

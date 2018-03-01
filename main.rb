@@ -11,9 +11,9 @@ Window.load_resources do
 
   Window.loop do
     Sprite.update([player])
+    Sprite.check([player], map.tiles)
     map.scroll(player.offset)
     Sprite.update(map.tiles)
-    Sprite.check([player], map.tiles)
     Sprite.draw([player] + map.tiles)
 
     if Input.key_push?(K_ESCAPE)

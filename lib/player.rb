@@ -9,13 +9,15 @@ class Player < Sprite
     self.x, self.y = 50, 60
     self.image = Image.new(10, 50, C_WHITE)
     @alive = true
+    @clockwise = 1
     init_offset
   end
 
   def update
     init_offset
     return unless @alive
-    self.angle += 1
+    @collided = false
+    self.angle += 1 * @clockwise
     self.x += Input.x * 3
     self.y += Input.y * 3
 
@@ -23,8 +25,18 @@ class Player < Sprite
   end
 
   def shot(other)
-    @alive = false
-    self.image = Image.new(10, 50, C_RED)
+    case other.role
+    when :wall
+      @alive = false
+      self.image = Image.new(10, 50, C_RED)
+    when :spring
+      @clockwise *= -1
+      self.x -= Input.x * 5
+      self.y -= Input.y * 5
+      self.angle += 2 * @clockwise
+    end
+
+    @collided = true
   end
 
   def init_offset
