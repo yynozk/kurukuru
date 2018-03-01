@@ -9,6 +9,7 @@ class Player < Sprite
   SPEED_BOUND_ROTATION = 2
   COLOR_ALIVE = C_WHITE
   COLOR_DEAD = [96, 96, 96]
+  COLOR_GOAL = C_YELLOW
 
   def initialize(x = 320, y = 240)
     super()
@@ -40,6 +41,9 @@ class Player < Sprite
       @_y -= Input.y * SPEED_BOUND
       @va *= -1
       @_a += SPEED_BOUND_ROTATION * @va
+    when :goal
+      @alive = false
+      self.image = Image.new(WIDTH, HEIGHT, COLOR_GOAL)
     end
 
     move
